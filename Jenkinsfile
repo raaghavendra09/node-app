@@ -1,12 +1,17 @@
 pipeline {
     agent any
+    tools { 
+        maven 'Maven'
+    }
     environment{
         DOCKER_TAG = getDockerTag()
     }
+    
     stages{
        stage('code cloning'){
          steps{
-            git 'https://github.com/anilkumarpuli/node-app.git'
+            // git 'https://github.com/anilkumarpuli/node-app.git'
+             git 'https://github.com/raaghavendra09/node-app.git'
                }
            }
          stage('code build by maven'){
@@ -17,7 +22,7 @@ pipeline {
         
         stage('Build Docker Image'){
             steps{
-                sh "docker build . -t anilkumblepuli/vprofile2:${DOCKER_TAG}"
+                sh "docker build . -t raaghavendra09/vprofile2:${DOCKER_TAG}"
             }
         }
         stage('DockerHub Push'){
