@@ -30,7 +30,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'docker-hub', variable: 'docker-hub-vprofile')])   {
                     sh "docker login -u raaghavendra09 -p ${docker-hub-vprofile}"
                     sh "docker push raaghavendra09/vprofile2:${DOCKER_TAG}"
-                }
+                
             }
         }
         stage('Deploy to k8s'){
