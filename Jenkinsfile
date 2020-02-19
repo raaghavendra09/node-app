@@ -22,15 +22,15 @@ pipeline {
         
         stage('Build Docker Image'){
             steps{
-                sh "docker build . -t shivaraj536211/vprofile2:${DOCKER_TAG}"
+                sh "docker build . -t raaghavendra09/vprofile2:${DOCKER_TAG}"
             }
         }
         stage('DockerHub Push'){
             steps{
-         withCredentials([string(credentialsId: 'nani', variable: 'nani')]) {
+         withCredentials([string(credentialsId: 'passwd', variable: 'passwd')]) {
 
-                   sh "docker login -u shivaraj536211 -p ${nani}"
-                    sh "docker push shivaraj536211/vprofile2:${DOCKER_TAG}"
+                   sh "docker login -u raaghavendra09 -p ${passwd}"
+                    sh "docker push raaghavendra09/vprofile2:${DOCKER_TAG}"
                 } 
             }
         }
